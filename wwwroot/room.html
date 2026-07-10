@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>방</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="initRoom()">
+
+    <div class="container">
+
+        <div class="room-title-area">
+            <h2 id="roomTitle" style="display:inline-block; margin-right: 10px;"></h2>
+            <span id="deliveryLinkBox"></span>
+        </div>
+        <!-- 방장 강조 -->
+        <div id="hostBox"></div>
+
+        <div class="card">
+            <input id="name" placeholder="이름">
+            <input id="menu" placeholder="메뉴">
+            <input id="amount" type="number" placeholder="금액" />
+            <button onclick="addOrder()">추가</button>
+        </div>
+
+        <div id="list"></div>
+
+        <div class="summary">
+            <span>총액: <b id="total">0</b>원</span>
+            <span class="unpaid">미입금: <b id="unpaid">0</b>원</span>
+        </div>
+
+        <button class="danger" id="deleteBtn" style="display:none;" onclick="deleteRoom()">방 삭제</button>
+
+        <button class="back-btn" onclick="goHome()">← 뒤로가기</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

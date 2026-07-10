@@ -1,0 +1,526 @@
+/* ================= Google Fonts 적용 ================= */
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap');
+
+/* ================= 기본 테마 & 초기화 ================= */
+* {
+    box-sizing: border-box;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f7f9fc;
+    color: #1e2022;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 30px 20px 80px 20px; /* 하단 여유 공간 확보 */
+}
+
+/* ================= 타이틀 & 헤더 영역 ================= */
+h1 {
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #1e2022;
+    letter-spacing: -0.5px;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 25px 0 15px;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ================= 카드 공통 레이아웃 ================= */
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03), 0 2px 10px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+/* ================= 입력 폼 요소 ================= */
+input {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    border: 1.5px solid #eaecef;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: #fafbfc;
+}
+
+input:focus {
+    border-color: #f7d100;
+    background: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(254, 229, 0, 0.25);
+}
+
+/* ================= 버튼 디자인 ================= */
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #fee500;
+    color: #1e2022;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+button:hover {
+    background: #fada00;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(250, 218, 0, 0.35);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* ================= 방 상세 화면 헤더 & 뒤로가기 ================= */
+.room-title-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    gap: 8px;
+}
+
+#roomTitle {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1e2022;
+    margin: 0;
+}
+
+.delivery-badge-link {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #fff0f0;
+    color: #e03131;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(224, 49, 49, 0.15);
+}
+
+.delivery-badge-link:hover {
+    background: #ffe3e3;
+    transform: scale(1.03);
+}
+
+#hostBox {
+    font-size: 14px;
+    font-weight: 600;
+    color: #8c9096;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ================= 기차 리스트 카드 ================= */
+#roomList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.room-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.room-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+    border-color: rgba(254, 229, 0, 0.35);
+}
+
+.room-info {
+    flex: 1;
+}
+
+.room-info .title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2b2d31;
+    margin-bottom: 6px;
+}
+
+.room-info .meta {
+    font-size: 12px;
+    color: #8c9096;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.room-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* 참여하기 버튼 & 대시보드 안의 배달 링크 버튼 */
+.join-btn {
+    width: auto;
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 10px;
+    background: #fee500;
+    color: #1e2022;
+}
+
+.delivery-btn {
+    display: inline-block;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 10px;
+    background: #fff5eb;
+    color: #f76707;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid rgba(247, 103, 7, 0.1);
+}
+
+.delivery-btn:hover {
+    background: #ffe8cc;
+    transform: translateY(-1px);
+}
+
+.empty-list-msg {
+    text-align: center;
+    color: #8c9096;
+    font-size: 14px;
+    padding: 40px 20px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px dashed #eaecef;
+}
+
+/* ================= 주문 내역 리스트 ================= */
+#list {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item {
+    background: #ffffff;
+    padding: 14px 18px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0,0,0,0.01);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.item:hover {
+    transform: scale(1.01);
+    border-color: #eaecef;
+}
+
+/* 입금 완료 처리 스킨 */
+.item.paid {
+    background: #f1f3f5;
+    opacity: 0.6;
+    border-color: transparent;
+}
+
+.item.paid .text {
+    text-decoration: line-through;
+    color: #868e96;
+}
+
+.item.paid .price {
+    text-decoration: line-through;
+    color: #868e96;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 아바타 프로필 아이콘 */
+.profile {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 13px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* 아바타 프리셋 배경색 */
+.profile.red { background: linear-gradient(135deg, #ff8787, #fa5252); }
+.profile.blue { background: linear-gradient(135deg, #74c0fc, #228be6); }
+.profile.green { background: linear-gradient(135deg, #8ce99a, #40c057); }
+.profile.purple { background: linear-gradient(135deg, #b197fc, #7950f2); }
+.profile.orange { background: linear-gradient(135deg, #ffd43b, #fab005); }
+
+/* 금액 및 뱃지 영역 */
+.amount-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.amount-area .price {
+    font-weight: 750;
+    font-size: 15px;
+    color: #2b2d31;
+}
+
+.badge {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 700;
+    background: #eaecef;
+    color: #495057;
+    transition: all 0.2s ease;
+}
+
+.badge.paid {
+    background: #ebfbee;
+    color: #2b8a3e;
+}
+
+/* ================= 결산 요약 패널 ================= */
+.summary {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px 22px;
+    margin: 25px 0 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+}
+
+.summary span {
+    font-size: 14px;
+    color: #8c9096;
+}
+
+.summary b {
+    font-size: 18px;
+    color: #1e2022;
+    margin-left: 4px;
+}
+
+.summary .unpaid b {
+    color: #fa5252;
+}
+
+/* ================= 유틸리티 & 시스템 액션 버튼 ================= */
+.danger {
+    background: #fff5f5;
+    color: #e03131;
+    border: 1px solid rgba(224, 49, 49, 0.15);
+    margin-top: 15px;
+}
+
+.danger:hover {
+    background: #ffe3e3;
+    box-shadow: 0 4px 12px rgba(224, 49, 49, 0.15);
+}
+
+.back-btn {
+    background: #ffffff;
+    color: #495057;
+    border: 1px solid #eaecef;
+    margin-top: 10px;
+}
+
+.back-btn:hover {
+    background: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ================= ✏️ 주문 인라인 수정 카드 스타일링 ================= */
+.item.edit-mode-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    cursor: default;
+    background: #ffffff;
+    border: 1.5px solid #fee500;
+    box-shadow: 0 6px 16px rgba(254, 229, 0, 0.15);
+}
+
+.edit-fields-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.edit-fields-row .edit-input {
+    flex: 1;
+    margin-bottom: 0;
+    padding: 8px 12px;
+    font-size: 13px;
+    border-radius: 8px;
+    border: 1.5px solid #eaecef;
+    height: 36px;
+}
+
+.edit-actions-row {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.edit-actions-row button {
+    width: auto;
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 8px;
+    height: 32px;
+}
+
+.save-edit-btn {
+    background: #fee500;
+    color: #1e2022;
+}
+
+.cancel-edit-btn {
+    background: #f1f3f5;
+    color: #495057;
+    border: 1.5px solid #eaecef;
+}
+
+/* ================= ✏️/🗑️ 개별 아이콘 버튼 스타일링 ================= */
+.amount-area-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.action-buttons-wrap {
+    display: flex;
+    gap: 4px;
+}
+
+.action-buttons-wrap button {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: 6px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border: 1px solid #eaecef;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.action-buttons-wrap button:hover {
+    background: #e9ecef;
+    transform: scale(1.08);
+}
+
+.action-buttons-wrap .action-del-btn:hover {
+    background: #fff5f5;
+    border-color: #ffc9c9;
+    color: #fa5252;
+}
+
+/* ================= 📱 모바일 디바이스 해상도 대응 미디어 쿼리 (꽉 찬 화면) ================= */
+@media (max-width: 600px) {
+    body {
+        background: #ffffff; /* 모바일은 깔끔하게 단색 일체화 */
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 12px 60px 12px; /* 좌우 여백을 최소화하여 가로 가용면적 확보 */
+    }
+    
+    .card {
+        border-radius: 14px;
+        padding: 15px;
+        margin-bottom: 12px;
+    }
+    
+    .room-card {
+        border-radius: 14px;
+        padding: 14px 16px;
+    }
+    
+    .item {
+        border-radius: 14px;
+        padding: 12px;
+    }
+    
+    .summary {
+        border-radius: 14px;
+        padding: 14px 18px;
+        margin: 18px 0 10px 0;
+    }
+    
+    h1 {
+        font-size: 24px;
+        margin-bottom: 18px;
+    }
+    
+    /* 인라인 수정 폼 모바일 대응 (좁은 너비에서 상하 배치) */
+    .edit-fields-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .edit-fields-row .edit-input {
+        width: 100%;
+    }
+}
