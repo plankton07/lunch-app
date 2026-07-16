@@ -41,6 +41,77 @@ h3 {
     gap: 6px;
 }
 
+.home-header {
+    margin: 8px 0 22px;
+    text-align: center;
+}
+
+.home-header h1 {
+    margin-bottom: 4px;
+}
+
+.home-logo {
+    width: 62px;
+    height: 52px;
+    margin-right: 7px;
+    vertical-align: -14px;
+    object-fit: contain;
+}
+
+.home-header p {
+    margin: 0;
+    color: #8c9096;
+    font-size: 14px;
+}
+
+.home-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 14px;
+}
+
+.home-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 14px;
+}
+
+.home-list-header h3 {
+    margin: 0 0 2px;
+}
+
+.home-list-header span,
+.input-guide {
+    margin: 0;
+    color: #8c9096;
+    font-size: 12px;
+}
+
+.create-room-toggle {
+    width: auto;
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.create-room-panel {
+    margin-top: 18px;
+}
+
+.create-room-panel .panel-heading {
+    margin-bottom: 12px;
+}
+
+.create-room-panel .panel-heading h3 {
+    margin: 0;
+}
+
+.input-guide {
+    margin: -4px 2px 12px;
+}
+
 /* ================= 카드 공통 레이아웃 ================= */
 .card {
     background: #ffffff;
@@ -109,7 +180,7 @@ button:active {
     gap: 8px;
 }
 
-#roomTitle {
+.room-title-area #roomTitle {
     font-size: 22px;
     font-weight: 800;
     color: #1e2022;
@@ -181,12 +252,41 @@ button:active {
     margin-bottom: 6px;
 }
 
+.room-title-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.room-status {
+    flex: 0 0 auto;
+    padding: 3px 7px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.room-status.open {
+    background: #ebfbee;
+    color: #2b8a3e;
+}
+
+.room-status.closed {
+    background: #f1f3f5;
+    color: #868e96;
+}
+
+.closed-room {
+    opacity: 0.78;
+}
+
 .room-info .meta {
     font-size: 12px;
     color: #8c9096;
     display: flex;
     gap: 10px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .room-actions {
@@ -231,6 +331,21 @@ button:active {
     background: #ffffff;
     border-radius: 18px;
     border: 1px dashed #eaecef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.empty-list-msg strong {
+    color: #495057;
+}
+
+.empty-list-msg button {
+    width: auto;
+    padding: 9px 13px;
+    border-radius: 10px;
+    font-size: 13px;
 }
 
 /* ================= 주문 내역 리스트 ================= */
@@ -279,7 +394,11 @@ button:active {
 .row {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0;
+}
+
+.row .text {
+    flex: 1;
 }
 
 /* 아바타 프로필 아이콘 */
@@ -316,6 +435,12 @@ button:active {
     color: #2b2d31;
 }
 
+.amount-area .donation {
+    font-size: 12px;
+    font-weight: 700;
+    color: #e67700;
+}
+
 .badge {
     font-size: 11px;
     padding: 3px 8px;
@@ -335,29 +460,401 @@ button:active {
 .summary {
     background: #ffffff;
     border-radius: 18px;
-    padding: 18px 22px;
+    padding: 10px;
     margin: 25px 0 15px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 700;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     border: 1px solid rgba(0, 0, 0, 0.01);
 }
 
-.summary span {
-    font-size: 14px;
+.summary-item {
+    min-width: 0;
+    padding: 10px 8px;
+    border-radius: 12px;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.summary-item span {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 12px;
     color: #8c9096;
 }
 
-.summary b {
-    font-size: 18px;
+.summary-item b {
+    display: block;
+    font-size: 15px;
     color: #1e2022;
-    margin-left: 4px;
+    white-space: nowrap;
 }
 
-.summary .unpaid b {
+.summary-item.discount b {
+    color: #2b8a3e;
+}
+
+.summary-item.donation {
+    background: #fff4e6;
+}
+
+.summary-item.donation b {
+    color: #e67700;
+}
+
+.summary-item.final {
+    grid-column: span 2;
+    background: #fff9db;
+    text-align: left;
+    padding: 12px 14px;
+}
+
+.summary-item.final b {
+    font-size: 19px;
+}
+
+.summary-item.unpaid {
+    background: #fff5f5;
+}
+
+.summary-item.unpaid b {
     color: #fa5252;
+}
+
+.summary-item.remaining-points {
+    background: #f3f0ff;
+}
+
+.summary-item.remaining-points b {
+    color: #5f3dc4;
+}
+
+/* ================= 요기요 공동 장바구니 · 정산 ================= */
+.cart-panel,
+.settlement-panel,
+.share-panel,
+.menu-helper-panel,
+.menu-import-panel,
+.yogiyo-preview {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px 20px;
+    margin-top: 18px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.order-status-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 13px 15px;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.order-status-panel span {
+    display: block;
+    font-size: 12px;
+    color: #8c9096;
+}
+
+.order-status-panel strong {
+    font-size: 15px;
+}
+
+.order-status-panel strong.open { color: #2b8a3e; }
+.order-status-panel strong.closed { color: #e03131; }
+
+.order-status-panel button {
+    width: auto;
+    padding: 7px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.close-order-btn { background: #fff3bf; }
+.reopen-btn { background: #ebfbee; color: #2b8a3e; }
+
+.order-closed {
+    opacity: 0.58;
+}
+
+.order-closed::before {
+    content: "주문이 마감되었습니다";
+    display: block;
+    margin-bottom: 10px;
+    color: #e03131;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.yogiyo-preview {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    overflow: hidden;
+}
+
+.yogiyo-preview img,
+.preview-placeholder {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+    border-radius: 14px;
+    object-fit: cover;
+    background: #fff0f0;
+}
+
+.preview-placeholder {
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+}
+
+.preview-content {
+    min-width: 0;
+}
+
+.preview-content span,
+.preview-content p,
+.preview-loading {
+    display: block;
+    margin: 0;
+    color: #8c9096;
+    font-size: 12px;
+}
+
+.preview-content strong {
+    display: block;
+    margin: 3px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #2b2d31;
+}
+
+.preview-content p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.preview-error {
+    flex: 1;
+}
+
+.preview-error span {
+    white-space: normal;
+}
+
+.preview-error button {
+    width: auto;
+    margin-top: 7px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: #f1f3f5;
+    color: #495057;
+    font-size: 12px;
+}
+
+.menu-helper-panel textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 58px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    border: 1.5px solid #eaecef;
+    border-radius: 12px;
+    background: #fafbfc;
+    font-size: 14px;
+}
+
+.menu-helper-panel textarea:focus {
+    border-color: #f7d100;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(254, 229, 0, 0.25);
+}
+
+.menu-helper-btn {
+    background: #fff3bf;
+}
+
+.menu-import-btn {
+    background: #fff3bf;
+    margin-bottom: 10px;
+}
+
+.menu-import-btn:disabled {
+    cursor: wait;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+.menu-candidate-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.menu-candidate {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+    justify-content: space-between;
+    border: 1px solid #f1f3f5;
+    background: #fafbfc;
+    color: #2b2d31;
+    font-size: 13px;
+}
+
+.menu-candidate span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.menu-candidate b {
+    flex: 0 0 auto;
+    margin-left: 10px;
+}
+
+.panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.panel-heading h3,
+.share-panel h3 {
+    margin: 0 0 14px;
+}
+
+.panel-heading span,
+.share-guide {
+    margin: 0 0 14px;
+    font-size: 12px;
+    color: #8c9096;
+}
+
+.count-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: #fff9db;
+    color: #8c6d1f;
+    font-weight: 700;
+}
+
+.cart-list,
+.share-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cart-toggle {
+    width: 100%;
+    padding: 0;
+    justify-content: flex-start;
+    background: transparent;
+    color: #2b2d31;
+    box-shadow: none;
+}
+
+.cart-toggle:hover {
+    background: transparent;
+    transform: none;
+    box-shadow: none;
+}
+
+.cart-toggle > span:first-child {
+    margin-right: auto;
+    font-size: 18px;
+}
+
+.cart-toggle > span:last-child {
+    margin-left: 4px;
+    color: #8c9096;
+}
+
+.cart-content {
+    margin-top: 14px;
+}
+
+.cart-item,
+.share-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.cart-item:last-child,
+.share-item:last-child {
+    border-bottom: 0;
+}
+
+.cart-item span,
+.share-item span {
+    min-width: 0;
+    word-break: break-word;
+}
+
+.cart-item strong,
+.share-item b {
+    white-space: nowrap;
+    color: #2b2d31;
+}
+
+.share-item small {
+    display: block;
+    margin-top: 2px;
+    color: #8c9096;
+    font-size: 12px;
+}
+
+.share-amount {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+
+.settlement-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.settlement-inputs label {
+    color: #495057;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.settlement-inputs input {
+    margin: 6px 0 12px;
+}
+
+.settlement-save-btn {
+    background: #fff3bf;
+}
+
+.empty-panel {
+    margin: 0;
+    padding: 8px 0;
+    color: #8c9096;
+    font-size: 14px;
+    text-align: center;
 }
 
 /* ================= 유틸리티 & 시스템 액션 버튼 ================= */
@@ -374,10 +871,15 @@ button:active {
 }
 
 .back-btn {
+    width: auto;
+    padding: 8px 11px;
     background: #ffffff;
     color: #495057;
     border: 1px solid #eaecef;
-    margin-top: 10px;
+    border-radius: 10px;
+    margin: 0 0 14px;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .back-btn:hover {
@@ -398,12 +900,14 @@ button:active {
 
 .edit-fields-row {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     width: 100%;
 }
 
 .edit-fields-row .edit-input {
     flex: 1;
+    min-width: 120px;
     margin-bottom: 0;
     padding: 8px 12px;
     font-size: 13px;
@@ -497,6 +1001,20 @@ button:active {
         border-radius: 14px;
         padding: 14px 16px;
     }
+
+    .home-list-header {
+        align-items: flex-end;
+    }
+
+    .room-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .room-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
     
     .item {
         border-radius: 14px;
@@ -505,8 +1023,32 @@ button:active {
     
     .summary {
         border-radius: 14px;
-        padding: 14px 18px;
+        padding: 8px;
         margin: 18px 0 10px 0;
+        gap: 6px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .summary-item {
+        padding: 9px 6px;
+    }
+
+    .summary-item span {
+        font-size: 11px;
+    }
+
+    .summary-item b {
+        font-size: 14px;
+    }
+
+    .cart-panel,
+    .settlement-panel,
+    .share-panel,
+    .menu-helper-panel,
+    .menu-import-panel,
+    .yogiyo-preview {
+        border-radius: 14px;
+        padding: 15px;
     }
     
     h1 {

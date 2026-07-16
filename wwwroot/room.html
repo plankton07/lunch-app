@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>방</title>
+    <title>콩스밥밥 탑승</title>
+    <link rel="icon" type="image/png" href="/imgs/kongs-transparent.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body onload="initRoom()">
 
     <div class="container">
+        <button class="back-btn" type="button" onclick="goHome()">← 주문방 목록</button>
 
         <div class="room-title-area">
             <h2 id="roomTitle" style="display:inline-block; margin-right: 10px;"></h2>
@@ -19,23 +21,106 @@
         <!-- 방장 강조 -->
         <div id="hostBox"></div>
 
-        <div class="card">
+        <section class="order-status-panel">
+            <div>
+                <span>주문 상태</span>
+                <strong id="orderStatus">주문 받는 중</strong>
+            </div>
+            <button id="orderClosingBtn" type="button" onclick="toggleOrderClosing()">주문 마감</button>
+        </section>
+
+        <div id="orderForm" class="card">
             <input id="name" placeholder="이름">
             <input id="menu" placeholder="메뉴">
             <input id="amount" type="number" placeholder="금액" />
+            <input id="donation" type="number" inputmode="numeric" min="0" placeholder="기부할 남은 포인트 (선택)" />
             <button onclick="addOrder()">추가</button>
         </div>
 
+        <section id="yogiyoPreview" class="yogiyo-preview" hidden></section>
+
+        <section class="cart-panel">
+            <button class="cart-toggle" type="button" onclick="toggleCart()" aria-expanded="true">
+                <span>🛒 요기요 공동 장바구니</span>
+                <span id="cartCount" class="count-badge">0개 메뉴</span>
+                <span id="cartToggleIcon">⌃</span>
+            </button>
+            <div id="cartContent" class="cart-content">
+                <div id="cartList" class="cart-list"></div>
+            </div>
+        </section>
+
+        <section id="menuHelperPanel" class="menu-helper-panel">
+            <div class="panel-heading">
+                <h3>📋 요기요 메뉴 붙여넣기</h3>
+                <span>가격이 포함된 한 줄을 인식합니다</span>
+            </div>
+            <textarea id="menuPaste" rows="2" placeholder="예: 치즈돈까스 12,000원"></textarea>
+            <button class="menu-helper-btn" onclick="applyPastedMenu()">주문 입력칸에 반영</button>
+        </section>
+
+        <section id="menuImportPanel" class="menu-import-panel">
+            <div class="panel-heading">
+                <h3>🔎 요기요 메뉴 후보</h3>
+                <span>공개 페이지에 노출된 항목만</span>
+            </div>
+            <button id="menuImportBtn" class="menu-import-btn" onclick="loadYogiyoMenuCandidates()">메뉴 후보 불러오기</button>
+            <div id="yogiyoMenuCandidates" class="menu-candidate-list"></div>
+        </section>
+
         <div id="list"></div>
 
+        <section class="settlement-panel">
+            <div class="panel-heading">
+                <h3>🧾 배달비 · 쿠폰 정산</h3>
+                <span>관리 비밀번호 필요</span>
+            </div>
+            <div class="settlement-inputs">
+                <label>배달비<input id="deliveryFee" type="number" inputmode="numeric" min="0" placeholder="0" /></label>
+                <label>쿠폰 할인<input id="couponDiscount" type="number" inputmode="numeric" min="0"
+                        placeholder="0" /></label>
+            </div>
+            <button class="settlement-save-btn" onclick="saveSettlement()">배달비 · 쿠폰 저장</button>
+        </section>
+
         <div class="summary">
-            <span>총액: <b id="total">0</b>원</span>
-            <span class="unpaid">미입금: <b id="unpaid">0</b>원</span>
+            <div class="summary-item">
+                <span>주문합계</span>
+                <b id="total">0원</b>
+            </div>
+            <div class="summary-item discount">
+                <span>쿠폰 할인</span>
+                <b id="coupon">0원</b>
+            </div>
+            <div class="summary-item">
+                <span>배달비</span>
+                <b id="delivery">0원</b>
+            </div>
+            <div class="summary-item donation">
+                <span>기부합계</span>
+                <b id="donationTotal">0원</b>
+            </div>
+            <div class="summary-item final">
+                <span>최종 결제금액</span>
+                <b id="finalTotal">0원</b>
+            </div>
+            <div class="summary-item unpaid">
+                <span>미입금</span>
+                <b id="unpaid">0원</b>
+            </div>
+            <div class="summary-item remaining-points">
+                <span>남은 포인트</span>
+                <b id="remainingPoints">0원</b>
+            </div>
         </div>
 
-        <button class="danger" id="deleteBtn" style="display:none;" onclick="deleteRoom()">방 삭제</button>
+        <section class="share-panel">
+            <h3>💸 개인별 부담금</h3>
+            <p class="share-guide">주문 금액 비율로 쿠폰과 배달비를 나누고, 기부는 각 사람 부담금에 더합니다.</p>
+            <div id="shareList" class="share-list"></div>
+        </section>
 
-        <button class="back-btn" onclick="goHome()">← 뒤로가기</button>
+        <button class="danger" id="deleteBtn" style="display:none;" onclick="deleteRoom()">방 삭제</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>

@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "cP7GqHyyttw=",
+  "dgSpecHash": "8820nCtFS9U=",
   "success": true,
   "projectFilePath": "D:\\work\\lunch\\LunchApp\\LunchApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\seohoo.lee\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
+    "C:\\Users\\seohoo.lee\\.nuget\\packages\\microsoft.playwright\\1.61.0\\microsoft.playwright.1.61.0.nupkg.sha512",
+    "C:\\Users\\seohoo.lee\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,32 +1,55 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>정산방</title>
+    <title>콩스밥밥</title>
+    <link rel="icon" type="image/png" href="/imgs/kongs-transparent.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body onload="loadRooms()">
 
-<div class="container">
-    <h1>💸 콩스밥밥</h1>
+    <div class="container">
+        <header class="home-header">
+            <h1><img class="home-logo" src="imgs/kongs-transparent.png" alt="콩스밥밥" />콩스밥밥</h1>
+            <p>함께 주문하고, 한 번에 정산하세요.</p>
+        </header>
 
-    <div class="card">
-        <input id="roomTitle" placeholder="방 제목" />
-        <input id="roomHost" placeholder="방장 이름" />
-        <input id="roomPassword" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="삭제 비밀번호 4자리" />
-        <input id="roomLink" placeholder="배달 링크 (선택)" />
+        <section class="home-actions">
+            <button id="createRoomToggle" class="create-room-toggle" type="button" onclick="toggleCreateRoomForm()">＋ 새
+                주문방</button>
+        </section>
 
-        <button onclick="createRoom()">방 만들기</button>
+        <section id="createRoomPanel" class="card create-room-panel" hidden>
+            <div class="panel-heading">
+                <h3>새 주문방 만들기</h3>
+                <span>필수 항목을 입력해 주세요</span>
+            </div>
+            <input id="roomTitle" placeholder="예: 금요일 점심" />
+            <input id="roomHost" placeholder="방장 이름" />
+            <input id="roomPassword" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}"
+                placeholder="관리 비밀번호 4자리" />
+            <p class="input-guide">주문 마감, 배달비·쿠폰 관리, 방 삭제에 사용됩니다.</p>
+            <input id="roomLink" placeholder="요기요 배달 링크 (선택)" />
+
+            <button id="createRoomBtn" onclick="createRoom()">주문방 만들기</button>
+        </section>
+
+        <section class="home-list-header">
+            <div>
+                <h3>📋 주문방 목록</h3>
+                <span id="roomSummary">진행 중 0개</span>
+            </div>
+        </section>
+
+        <div id="roomList"></div>
     </div>
 
-    <h3>📋 콩스밥밥 기차 리스트</h3>
-    <div id="roomList"></div>
-</div>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
-<script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>

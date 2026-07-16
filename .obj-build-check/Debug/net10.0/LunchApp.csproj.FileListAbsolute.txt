@@ -1,0 +1,8 @@
+D:\work\lunch\LunchApp\.obj-build-check\Debug\net10.0\LunchApp.csproj.AssemblyReference.cache
+D:\work\lunch\LunchApp\.obj-build-check\Debug\net10.0\rpswa.dswa.cache.json
+D:\work\lunch\LunchApp\.obj-build-check\Debug\net10.0\LunchApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\lunch\LunchApp\.obj-build-check\Debug\net10.0\LunchApp.AssemblyInfoInputs.cache
+D:\work\lunch\LunchApp\.obj-build-check\Debug\net10.0\LunchApp.AssemblyInfo.cs
+D:\work\lunch\LunchApp\.obj-build-check\Debug\net10.0\LunchApp.csproj.CoreCompileInputs.cache
+D:\work\lunch\LunchApp\.obj-build-check\Debug\net10.0\LunchApp.MvcApplicationPartsAssemblyInfo.cache
+D:\work\lunch\LunchApp\.obj-build-check\Debug\net10.0\LunchApp.sourcelink.json
